@@ -1,8 +1,8 @@
-export const csvToJson = (csv_string) => {
+export const stringToJson = (string_string) => {
   // 1. 문자열을 줄바꿈으로 구분 => 배열에 저장
-  const rows = csv_string.split("\n");
+  const rows = string_string.split("\n");
 
-  // 2. 빈 배열 생성: CSV의 각 행을 담을 JSON 객체임
+  // 2. 빈 배열 생성: string의 각 행을 담을 JSON 객체임
   const jsonArray = [];
 
   // 3. 제목 행 추출 후, 콤마로 구분 => 배열에 저장

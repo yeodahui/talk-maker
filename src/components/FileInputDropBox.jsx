@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useChatContext } from "../contexts/chatContext";
-import { csvToJson } from "../modules/csvToJson";
+import { stringToJson } from "../modules/stringToJson";
 
 const FileInputBox = ({ file, setFile }) => {
   const [dragging, setDragging] = useState(false);
@@ -11,7 +11,7 @@ const FileInputBox = ({ file, setFile }) => {
   const processFile = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
-      const jsonChat = csvToJson(reader.result);
+      const jsonChat = stringToJson(reader.result);
       console.log(jsonChat.slice(10));
       setChat(jsonChat);
     };
