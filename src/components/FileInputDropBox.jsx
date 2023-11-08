@@ -1,16 +1,19 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useChatContext } from "../contexts/chatContext";
+import { csvToJson } from "../modules/csvToJson";
 
 const FileInputBox = ({ file, setFile }) => {
   const [dragging, setDragging] = useState(false);
+  const { setChat } = useChatContext();
   const fileInput = useRef();
 
   const processFile = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
-      setFile(reader.result);
-      console.log(reader.result.substr(0, 30));
+      const jsonChat = csvToJson(reader.result);
+      console.log(jsonChat.slice(10));
+      setChat(jsonChat);
     };
 
     reader.readAsText(file, "euc-kr");
