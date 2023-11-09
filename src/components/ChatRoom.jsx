@@ -1,6 +1,4 @@
-import React, { useLayoutEffect } from "react";
 import { useEffect } from "react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useChatContext } from "../contexts/chatContext";
@@ -10,29 +8,25 @@ import ChatBubble from "./ChatBubble";
 const ChatRoom = () => {
   const navigate = useNavigate();
   const { theme } = useChatThemeContext();
-  const { chat, setChat } = useChatContext();
-  const [me, setMe] = useState();
+  const { chat, me } = useChatContext();
 
   useEffect(() => {
     if (!chat) {
       navigate("/");
     }
   });
-  useLayoutEffect(() => {
-    if (chat) {
-      setMe(chat[0].User);
-    }
-  }, [chat]);
 
   return (
     chat && (
       <StyledChatList theme={theme}>
-        {chat.map(({ User, Message, Date }) => (
+        {chat.map(({ User, Message, Date }, index) => (
           <ChatBubble
             isMe={User === me}
+            // isMe={true}
             user={User}
             date={Date}
             message={Message}
+            index={index}
           />
         ))}
       </StyledChatList>

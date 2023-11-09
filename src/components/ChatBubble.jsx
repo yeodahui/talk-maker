@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useChatThemeContext } from "../contexts/chatThemeContext";
 
-const ChatBubble = ({ isMe, user, date, message }) => {
+const ChatBubble = ({ isMe, user, date, message, index }) => {
   const { theme } = useChatThemeContext();
   const time = new Date(date);
   const timeObj = {
@@ -12,7 +12,13 @@ const ChatBubble = ({ isMe, user, date, message }) => {
   };
 
   return (
-    <StyledBubble theme={theme}>
+    <StyledBubble
+      theme={theme}
+      onClick={() => {
+        // 삭제할 때 이용
+        console.log(index);
+      }}
+    >
       <p className={`name ${isMe ? "right" : "left"}`}>{user}</p>
       <div className={`content ${isMe ? "right" : "left"}`}>
         <p className={`message`}>{message}</p>
@@ -62,6 +68,7 @@ const StyledBubble = styled.li`
       font-size: 1.6rem;
       line-height: normal;
       word-wrap: break-word;
+      white-space: pre-line;
 
       background-color: ${({ theme }) => theme.bubbleBg};
       color: ${({ theme }) => theme.bubbleText};
