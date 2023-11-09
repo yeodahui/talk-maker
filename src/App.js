@@ -1,10 +1,10 @@
-import FileInputDropBox from "./components/FileInputDropBox";
 import "./App.css";
+import RouterComponent from "./pages/Routes";
 
 function App() {
   return (
     <>
-      <FileInputDropBox />
+      <RouterComponent />
     </>
   );
 }
