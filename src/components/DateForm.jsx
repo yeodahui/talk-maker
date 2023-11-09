@@ -19,16 +19,19 @@ const DateForm = () => {
   });
 
   useEffect(() => {
-    const minmax = findMinMaxDate(chat);
-    setMinmax({
-      min: minmax.min,
-      max: minmax.max,
-    });
-    setDateRange({
-      start: minmax.min,
-      end: minmax.max,
-    });
-  }, []);
+    if (chat) {
+      console.log(chat);
+      const minmax = findMinMaxDate(chat);
+      setMinmax({
+        min: minmax.min,
+        max: minmax.max,
+      });
+      setDateRange({
+        start: minmax.min,
+        end: minmax.max,
+      });
+    }
+  }, [chat]);
 
   const startChangeHander = (e) => {
     setDateRange((prev) => ({
@@ -53,8 +56,6 @@ const DateForm = () => {
       (item) => item.Date >= startDate && item.Date < endDate
     );
 
-    console.log(chat.length);
-    console.log(newChat.length);
     if (newChat.length === 0) {
       alert(
         "선택한 기간 동안 대화내역이 존재하지 않습니다. 날짜를 다시 선택해주세요."
@@ -118,12 +119,17 @@ const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
 
+    & > p {
+      color: gray;
+    }
+
+    border-radius: 30px;
     background-color: var(--field);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
 
   .date-form {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -132,12 +138,19 @@ const StyledDiv = styled.div`
     div {
       display: flex;
       justify-content: space-between;
-
+      align-items: center;
       label {
         font-weight: bold;
       }
       input {
+        padding: 5px 10px;
         font-size: inherit;
+        border: 1px solid lightgray;
+        border-radius: 8px;
+
+        &::-webkit-calendar-picker-indicator {
+          opacity: 0.6;
+        }
       }
     }
     button {
