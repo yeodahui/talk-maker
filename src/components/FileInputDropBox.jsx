@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useChatContext } from "../contexts/chatContext";
 import { stringToJson } from "../modules/stringToJson";
 
-const FileInputBox = ({ file, setFile }) => {
+const FileInputDropBox = ({ file, setFile }) => {
   const [dragging, setDragging] = useState(false);
   const { setChat } = useChatContext();
   const fileInput = useRef();
@@ -12,8 +12,11 @@ const FileInputBox = ({ file, setFile }) => {
     const reader = new FileReader();
     reader.onload = () => {
       const jsonChat = stringToJson(reader.result);
-      console.log(jsonChat.slice(10));
-      setChat(jsonChat);
+      if (jsonChat) {
+        setChat(jsonChat);
+      } else {
+        alert("파일 업로드에 실패했습니다.");
+      }
     };
 
     reader.readAsText(file, "euc-kr");
@@ -56,8 +59,8 @@ const FileInputBox = ({ file, setFile }) => {
 
   return (
     <>
-      <StyledDropButton
-        className={`dropbox ${dragging ? "active" : ""}`}
+      <StyledDropDiv
+        className={`dropbox ${dragging ? "dragover" : ""}`}
         id="dropbox"
         onDragEnter={dragEnterHandler}
         onDragLeave={dragLeaveHandler}
@@ -66,7 +69,7 @@ const FileInputBox = ({ file, setFile }) => {
         onClick={() => fileInput.current.click()}
       >
         <label htmlFor="fileInput">
-          {dragging ? "여기에 드롭" : "여기에 파일을 Drag & Drop 하세요 (.csv)"}
+          {dragging ? "여기에 드롭" : "여기에 파일을 Drag & Drop(.csv, .txt)"}
         </label>
         <input
           type="file"
@@ -76,12 +79,25 @@ const FileInputBox = ({ file, setFile }) => {
           onChange={fileChangeHandler}
           ref={fileInput}
         />
-      </StyledDropButton>
+        {!dragging && (
+          <>
+            <p className="noti">혹은</p>
+            <button
+              className="uploadButton"
+              // onClick={() => {
+              //   fileInput.current.click();
+              // }}
+            >
+              파일 업로드
+            </button>
+          </>
+        )}
+      </StyledDropDiv>
     </>
   );
 };
 
-const StyledDropButton = styled.button`
+const StyledDropDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -90,17 +106,32 @@ const StyledDropButton = styled.button`
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
 
-  color: dodgerblue;
+  color: var(--primary);
   font-weight: bold;
   font-size: 1.6rem;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 20px;
-  border: 5px dashed dodgerblue;
+  border: 5px dashed var(--primary);
 
-  &.active {
-    background-color: #1e8fff22;
+  .noti {
+    font-size: 1.2rem;
+  }
+
+  .uploadButton {
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--primary);
+    color: var(--field);
+    font-weight: bold;
+  }
+
+  &.dragover {
+    background-color: #e0f0ff;
   }
 `;
 
-export default FileInputBox;
+export default FileInputDropBox;
