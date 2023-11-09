@@ -1,6 +1,5 @@
 import React from "react";
 import { useRef } from "react";
-import downloadPdf from "dom-to-pdf";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ChatRoom from "../components/ChatRoom";
@@ -10,20 +9,6 @@ const DonePage = () => {
   const { setChat } = useChatContext();
   const chatRoom = useRef();
   const navigate = useNavigate();
-
-  const downloadPDF = () => {
-    const element = chatRoom.current;
-    console.log(element);
-    const options = {
-      filename: "csvToChat.pdf",
-    };
-
-    downloadPdf(element, options, (pdf) => {
-      // domToPdf(element, options, (pdf) => {
-      console.log(pdf);
-      console.log("done");
-    });
-  };
 
   return (
     <StyledContainer className="container">
