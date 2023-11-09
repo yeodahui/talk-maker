@@ -8,6 +8,11 @@ const FileInputDropBox = ({ file, setFile }) => {
   const { setChat } = useChatContext();
   const fileInput = useRef();
 
+  const validateFileType = (file) => {
+    const abailavleTypes = ["text/csv", "text/txt"];
+    return abailavleTypes.includes(file.type);
+  };
+
   const processFile = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -30,7 +35,9 @@ const FileInputDropBox = ({ file, setFile }) => {
     console.log("file dropped");
 
     const file = e.dataTransfer?.files[0];
-    processFile(file);
+    if (validateFileType(file)) {
+      processFile(file);
+    }
   };
   // Click해서 파일을 업로드했을 경우
   const fileChangeHandler = (e) => {
@@ -38,7 +45,10 @@ const FileInputDropBox = ({ file, setFile }) => {
     console.log("file input changed");
 
     const file = e.target.files[0];
-    processFile(file);
+
+    if (validateFileType(file)) {
+      processFile(file);
+    }
   };
   const dragEnterHandler = (e) => {
     e.preventDefault();
@@ -107,6 +117,7 @@ const StyledDropDiv = styled.div`
   align-items: center;
   text-align: center;
   flex-direction: column;
+  gap: 10px;
 
   color: var(--primary);
   font-weight: bold;
@@ -117,6 +128,7 @@ const StyledDropDiv = styled.div`
 
   .noti {
     font-size: 1.2rem;
+    color: #aaa;
   }
 
   .uploadButton {
