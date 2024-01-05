@@ -1,70 +1,20 @@
-# Getting Started with Create React App
+## [프로젝트 소개]
+- 제목: 톡메이커 : 카카오톡 내보내기 파일 뷰어
+- 개요: 카카오톡 대화 내역 내보내기를 했을 때 다운로드 받을 수 있는 .csv 파일을 채팅방 UI로 확인할 수 있는 웹 뷰어입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [사용방법]
+1. 대화 내용을 확인하고 싶은 카카오톡 채팅방에 입장하세요.
+2. 카카오톡 채팅방 [채팅방 우측 상단 메뉴 > 채팅방 설정 > 저장공간 관리 > 대화내용 저장]에서 대화내용을 저장해주세요.
+3. 저장된 .txt 혹은 .csv 파일을 아래 박스에 드래그 앤 드랍 하거나 파일 업로드를 클릭해 올려주세요.
+4. 대화 내용을 확인하고 싶은 기간을 선택하세요.
+5. 대화방 테마를 설정한 뒤 완료하세요.
 
-## Available Scripts
+## [프로젝트 URL]
+https://talk-maker-steel.vercel.app/
 
-In the project directory, you can run:
+## [테스트 데이터]
+첨부된 파일은 macOS에서 카카오톡 대화방 내보내기를 했을 때 받을 수 있는 csv 파일입니다.
+임의로 편집된 csv 파일을 사용할 경우 데이터가 입력되지 않습니다.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+테스트 데이터는 아래에서 다운로드 받을 수 있습니다.
+[테스트데이터.csv(다운로드)](https://github.com/yeodahui/talk-maker/files/13837285/default.csv)
